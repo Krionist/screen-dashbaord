@@ -414,6 +414,19 @@ def parse_rss_xml(xml_content: str, limit: int = 10):
         return []
 
 
+@app.route('/open-link', methods=['POST'])
+def open_link():
+    """Open a URL in the default browser (used by the dashboard instead of a Chrome popup)."""
+    if request.remote_addr not in ('127.0.0.1', '::1'):
+        return jsonify({"error": "local requests only"}), 403
+    url = str((request.get_json(silent=True) or {}).get('url', ''))
+    if not url.lower().startswith(('http://', 'https://')):
+        return jsonify({"error": "only http(s) URLs are allowed"}), 400
+    import webbrowser
+    webbrowser.open(url)
+    return jsonify({"status": "ok"})
+
+
 reddit_cache = {'data': None, 'time': 0, 'fail': 0}
 
 

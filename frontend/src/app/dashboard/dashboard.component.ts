@@ -207,7 +207,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   openLink(url: string): void {
-    window.open(url, '_blank');
+    // Open in the system default browser (via the bridge) instead of a Chrome app popup
+    fetch('/open-link', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url }),
+    }).catch(() => window.open(url, '_blank'));
   }
 
   getWindDirection(degrees: number): string {
