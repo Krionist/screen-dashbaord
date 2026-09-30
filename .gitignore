@@ -1,0 +1,26 @@
+# Secrets / local config (copy backend/config.example.json to backend/config.json)
+backend/config.json
+
+# Python
+backend/venv/
+__pycache__/
+*.pyc
+backend/*.log
+
+# Browser profiles created by the kiosk launcher
+backend/chrome-dashboard-profile/
+backend/brave-dashboard-profile/
+
+# Third-party binaries (download separately, see README)
+backend/PresentMon64.exe
+LibreHardwareMonitor/
+
+# Frontend build output / deps
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.claude/

@@ -1,0 +1,193 @@
+/* Global styles – KINETIC HORIZON dashboard */
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  background:
+    radial-gradient(900px 500px at 8% -10%, rgba(143, 245, 255, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 95% 110%, rgba(255, 116, 54, 0.10), transparent 60%),
+    radial-gradient(700px 400px at 50% 50%, rgba(117, 154, 255, 0.05), transparent 70%),
+    #08090b;
+  position: relative;
+}
+
+/* faint tech grid over the whole screen */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at center, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 40%, transparent 100%);
+}
+
+/* ---------- Panels ---------- */
+.panel {
+  --accent: 143, 245, 255;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    linear-gradient(160deg, rgba(var(--accent), 0.055) 0%, transparent 38%),
+    linear-gradient(180deg, rgba(26, 28, 33, 0.82), rgba(14, 15, 18, 0.9));
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 0 24px rgba(var(--accent), 0.04);
+  backdrop-filter: blur(6px);
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 18px;
+  right: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, rgba(var(--accent), 0.9), transparent);
+  opacity: 0.75;
+}
+
+.panel-cyan { --accent: 143, 245, 255; }
+.panel-orange { --accent: 255, 116, 54; }
+.panel-blue { --accent: 117, 154, 255; }
+
+/* ---------- Small tiles inside panels ---------- */
+.tile {
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.tile:hover {
+  border-color: rgba(143, 245, 255, 0.25);
+}
+
+.panel-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #adaaab;
+}
+
+.panel-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgb(var(--accent));
+  box-shadow: 0 0 8px rgb(var(--accent));
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.75); }
+}
+
+/* ---------- Text glow helpers ---------- */
+.glow-cyan { text-shadow: 0 0 18px rgba(143, 245, 255, 0.55), 0 0 2px rgba(143, 245, 255, 0.6); }
+.glow-orange { text-shadow: 0 0 18px rgba(255, 116, 54, 0.55), 0 0 2px rgba(255, 116, 54, 0.6); }
+.glow-soft { text-shadow: 0 0 14px rgba(255, 255, 255, 0.25); }
+
+/* ---------- Rings ---------- */
+.ring-track { stroke: rgba(255, 255, 255, 0.07); }
+.ring-progress {
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ring-cyan { filter: drop-shadow(0 0 6px rgba(143, 245, 255, 0.65)); }
+.ring-orange { filter: drop-shadow(0 0 6px rgba(255, 116, 54, 0.65)); }
+.ring-ticks { stroke: rgba(255, 255, 255, 0.16); stroke-dasharray: 1.5 9.2; }
+
+/* ---------- Segmented bars ---------- */
+.seg {
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.seg-cyan.on { background: linear-gradient(180deg, #8ff5ff, #00deec); box-shadow: 0 0 8px rgba(143, 245, 255, 0.6); }
+.seg-orange.on { background: linear-gradient(180deg, #ffa06e, #ff7436); box-shadow: 0 0 8px rgba(255, 116, 54, 0.6); }
+
+/* ---------- Feed items ---------- */
+.feed-item {
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 3px solid rgba(var(--accent), 0.7);
+  background: linear-gradient(90deg, rgba(var(--accent), 0.07), rgba(255, 255, 255, 0.02));
+  transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+.feed-item:hover {
+  transform: translateX(3px);
+  background: linear-gradient(90deg, rgba(var(--accent), 0.16), rgba(255, 255, 255, 0.04));
+}
+
+/* ---------- Chart ---------- */
+.chart-line { filter: drop-shadow(0 0 3px currentColor); stroke-linejoin: round; stroke-linecap: round; }
+
+/* ---------- Alerts ---------- */
+.alert-banner {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+.alert-warn {
+  background: rgba(60, 45, 8, 0.85);
+  border-color: rgba(250, 204, 21, 0.6);
+  box-shadow: 0 0 24px rgba(250, 204, 21, 0.35), 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+.alert-warn .alert-icon { color: #facc15; }
+.alert-crit {
+  background: rgba(70, 8, 12, 0.88);
+  border-color: rgba(239, 68, 68, 0.8);
+  animation: alert-flash 1s ease-in-out infinite;
+}
+.alert-crit .alert-icon { color: #f87171; }
+
+@keyframes alert-flash {
+  0%, 100% { box-shadow: 0 0 18px rgba(239, 68, 68, 0.4), 0 8px 30px rgba(0, 0, 0, 0.6); }
+  50% { box-shadow: 0 0 46px rgba(239, 68, 68, 0.95), 0 8px 30px rgba(0, 0, 0, 0.6); }
+}
+
+.alert-vignette {
+  box-shadow: inset 0 0 90px 10px rgba(239, 68, 68, 0.55);
+  animation: vignette-pulse 1s ease-in-out infinite;
+}
+@keyframes vignette-pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+/* ---------- Equalizer (now playing) ---------- */
+.eq { display: flex; align-items: flex-end; gap: 2px; height: 14px; }
+.eq span {
+  width: 3px;
+  background: linear-gradient(180deg, #8ff5ff, #759aff);
+  border-radius: 2px;
+  animation: eq-bounce 0.9s ease-in-out infinite;
+}
+.eq span:nth-child(2) { animation-delay: -0.3s; }
+.eq span:nth-child(3) { animation-delay: -0.6s; }
+.eq span:nth-child(4) { animation-delay: -0.15s; }
+@keyframes eq-bounce {
+  0%, 100% { height: 3px; }
+  50% { height: 14px; }
+}

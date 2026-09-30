@@ -1,0 +1,25 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 9101,
+    "debug": false
+  },
+  "modules": {
+    "enable_lhm": true,
+    "enable_gpu": true,
+    "enable_presentmon": false,
+    "enable_fullscreen": true
+  },
+  "lhm": {
+    "url": "http://localhost:8085/data.json",
+    "timeout": 2
+  },
+  "presentmon": {
+    "path": "PresentMon64.exe"
+  },
+  "weather": {
+    "openweathermap_api_key": "YOUR_OPENWEATHERMAP_API_KEY",
+    "lat": 47.4979,
+    "lon": 19.0402
+  }
+}

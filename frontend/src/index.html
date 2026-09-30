@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="hu" class="dark">
+<head>
+  <meta charset="utf-8">
+  <title>KINETIC HORIZON | PC Stats Dashboard</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-fixed-variant": "#003388",
+            "on-tertiary-container": "#ffffff",
+            "background": "#0e0e0f",
+            "surface-container-highest": "#262627",
+            "secondary-dim": "#ff7436",
+            "tertiary-fixed": "#92aeff",
+            "on-surface": "#ffffff",
+            "tertiary-dim": "#156aff",
+            "surface-variant": "#262627",
+            "inverse-surface": "#fcf8f9",
+            "outline": "#767576",
+            "on-secondary-fixed": "#601f00",
+            "surface-container-lowest": "#000000",
+            "on-secondary-fixed-variant": "#8f3200",
+            "surface-dim": "#0e0e0f",
+            "secondary-fixed-dim": "#ffb193",
+            "on-secondary": "#3e1100",
+            "on-tertiary-fixed": "#001441",
+            "primary-fixed": "#00eefc",
+            "tertiary": "#759aff",
+            "tertiary-container": "#0266ff",
+            "secondary-container": "#a63b00",
+            "primary-fixed-dim": "#00deec",
+            "tertiary-fixed-dim": "#7da0ff",
+            "on-background": "#ffffff",
+            "outline-variant": "#484849",
+            "on-surface-variant": "#adaaab",
+            "surface-container-high": "#201f21",
+            "surface-tint": "#8ff5ff",
+            "on-error": "#490006",
+            "surface": "#0e0e0f",
+            "on-tertiary": "#001c53",
+            "on-primary-container": "#005359",
+            "surface-container": "#1a191b",
+            "error-container": "#9f0519",
+            "on-secondary-container": "#fff6f3",
+            "error-dim": "#d7383b",
+            "primary": "#8ff5ff",
+            "on-primary-fixed-variant": "#005e64",
+            "surface-bright": "#2c2c2d",
+            "primary-dim": "#00deec",
+            "secondary-fixed": "#ffc5ae",
+            "secondary": "#ff7436",
+            "on-primary": "#005d63",
+            "inverse-on-surface": "#565556",
+            "surface-container-low": "#131314",
+            "inverse-primary": "#006a71",
+            "on-error-container": "#ffa8a3",
+            "on-primary-fixed": "#003f43",
+            "error": "#ff716c",
+            "primary-container": "#00eefc"
+          },
+          fontFamily: {
+            "headline": ["Space Grotesk"],
+            "body": ["Inter"],
+            "label": ["Space Grotesk"]
+          },
+          borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .inner-glow-cyan {
+      box-shadow: inset 0 0 10px rgba(143, 245, 255, 0.05);
+    }
+    .inner-glow-orange {
+      box-shadow: inset 0 0 10px rgba(255, 116, 54, 0.05);
+    }
+    ::-webkit-scrollbar { width: 0px; background: transparent; }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary overflow-hidden">
+  <app-root></app-root>
+</body>
+</html>
